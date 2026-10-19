@@ -1,0 +1,29 @@
+{
+  "name": "document-scanner-agent",
+  "version": "1.0.0",
+  "description": "Local background agent that exposes physical document scanners (WIA on Windows, SANE on Linux) to an allow-listed web application over a restricted loopback HTTP API.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "scanner-agent": "bin/scanner-agent.js"
+  },
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20.10"
+  },
+  "scripts": {
+    "start": "node bin/scanner-agent.js run",
+    "simulator": "node bin/scanner-agent.js run --adapter simulator --config ./config.example.json",
+    "test": "node --test \"test/**/*.test.js\"",
+    "diagnose": "node bin/scanner-agent.js diagnose"
+  },
+  "files": [
+    "bin",
+    "src",
+    "scripts",
+    "install",
+    "config.example.json",
+    "README.md"
+  ]
+}

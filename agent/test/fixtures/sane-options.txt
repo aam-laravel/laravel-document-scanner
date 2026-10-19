@@ -1,0 +1,21 @@
+Options specific to device `fujitsu:fi-7160:1234':
+  Standard:
+    --source ADF Front|ADF Back|ADF Duplex [ADF Front]
+        Selects the scan source (such as a document-feeder).
+    --mode Lineart|Halftone|Gray|Color [Lineart]
+        Selects the scan mode (e.g., lineart, monochrome, or color).
+    --resolution 50..600dpi (in steps of 1) [600]
+        Sets the horizontal resolution of the scanned image.
+  Geometry:
+    -t 0..355.6mm (in steps of 0.0211639) [0]
+        Top-left y position of scan area.
+    -x 0..215.872mm (in steps of 0.0211639) [215.872]
+        Width of scan-area.
+    -y 0..355.6mm (in steps of 0.0211639) [279.364]
+        Height of scan-area.
+  Enhancement:
+    --brightness -127..127 (in steps of 1) [0]
+        Adjusts the brightness of the image.
+    --contrast -127..127% (in steps of 1) [0]
+        Adjusts the contrast of the image.
+    --gamma 0.3..5 (in steps of 0.01) [inactive]

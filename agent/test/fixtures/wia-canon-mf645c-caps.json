@@ -1,0 +1,49 @@
+{
+  "_comment": "Recorded 2026-10-19 from a real Canon MF645C (Microsoft eSCL USB WIA 2.0 driver) via the WIA Automation Library; values transcribed from the property dump.",
+  "type": "caps",
+  "wiaVersion": "2.0",
+  "handlingCapabilities": { "id": 3086, "value": 32775, "readOnly": true, "subType": 0 },
+  "handlingStatus": { "id": 3087, "value": 1031, "readOnly": true, "subType": 0 },
+  "handlingSelect": { "id": 3088, "value": 2, "readOnly": false, "subType": 3, "values": [1, 2, 4, 32] },
+  "bedSize": [
+    { "id": 3074, "value": 8503, "readOnly": true, "subType": 0 },
+    { "id": 3075, "value": 14000, "readOnly": true, "subType": 0 }
+  ],
+  "sheetFeedSize": [
+    { "id": 3076, "value": 8503, "readOnly": true, "subType": 0 },
+    { "id": 3077, "value": 14000, "readOnly": true, "subType": 0 }
+  ],
+  "minSheetFeedSize": [
+    { "id": 3104, "value": 107, "readOnly": true, "subType": 0 },
+    { "id": 3105, "value": 107, "readOnly": true, "subType": 0 }
+  ],
+  "perSelect": {
+    "2": {
+      "dataType": { "id": 4103, "value": 3, "readOnly": false, "subType": 2, "values": [3, 2] },
+      "xres": { "id": 6147, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "yres": { "id": 6148, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "xextent": { "id": 6151, "value": 2551, "readOnly": false, "subType": 1, "min": 32, "max": 2551, "step": 1 },
+      "yextent": { "id": 6152, "value": 4200, "readOnly": false, "subType": 1, "min": 32, "max": 4200, "step": 1 },
+      "brightness": { "id": 6154, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 },
+      "contrast": { "id": 6155, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 }
+    },
+    "1": {
+      "dataType": { "id": 4103, "value": 3, "readOnly": false, "subType": 2, "values": [3, 2] },
+      "xres": { "id": 6147, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "yres": { "id": 6148, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "xextent": { "id": 6151, "value": 2551, "readOnly": false, "subType": 1, "min": 32, "max": 2551, "step": 1 },
+      "yextent": { "id": 6152, "value": 4200, "readOnly": false, "subType": 1, "min": 32, "max": 4200, "step": 1 },
+      "brightness": { "id": 6154, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 },
+      "contrast": { "id": 6155, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 }
+    },
+    "5": {
+      "dataType": { "id": 4103, "value": 3, "readOnly": false, "subType": 2, "values": [3, 2] },
+      "xres": { "id": 6147, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "yres": { "id": 6148, "value": 300, "readOnly": false, "subType": 2, "values": [300] },
+      "xextent": { "id": 6151, "value": 2551, "readOnly": false, "subType": 1, "min": 32, "max": 2551, "step": 1 },
+      "yextent": { "id": 6152, "value": 4200, "readOnly": false, "subType": 1, "min": 32, "max": 4200, "step": 1 },
+      "brightness": { "id": 6154, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 },
+      "contrast": { "id": 6155, "value": 0, "readOnly": false, "subType": 1, "min": 0, "max": 0, "step": 0 }
+    }
+  }
+}

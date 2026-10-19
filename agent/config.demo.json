@@ -1,0 +1,12 @@
+{
+  "port": 47115,
+  "adapters": ["simulator", "auto"],
+  "pairingMode": "signed",
+  "sites": [
+    { "origin": "http://localhost:8000", "pairingSecret": "dev-only-secret-change-me-0123456789abcdef" },
+    { "origin": "http://localhost:8001", "pairingSecret": "dev-only-secret-change-me-0123456789abcdef" }
+  ],
+  "logLevel": "info",
+  "logFile": null,
+  "simulator": { "pageDelayMs": 500, "feederSheets": 3 }
+}

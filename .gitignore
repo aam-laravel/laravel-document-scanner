@@ -1,0 +1,28 @@
+# Package
+/vendor/
+/.phpunit.cache/
+/composer.lock
+
+# Demo application (local only)
+/demo/vendor/
+/demo/node_modules/
+/demo/.env
+/demo/database/*.sqlite
+/demo/storage/*.key
+/demo/storage/app/private/
+/demo/storage/framework/cache/data/*
+/demo/storage/framework/sessions/*
+/demo/storage/framework/views/*
+/demo/storage/logs/*
+
+# Agent
+/agent/node_modules/
+/agent/config.local.json
+
+# Local tooling / notes
+/.claude/
+/CLAUDE.md
+/demo/CLAUDE.md
+/demo/AGENTS.md
+/*.old.md
+/.gitignore.root.old

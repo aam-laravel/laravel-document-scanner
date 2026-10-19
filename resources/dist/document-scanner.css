@@ -1,0 +1,83 @@
+/* Document scanner widget. Uses logical properties so RTL (Arabic) and LTR both work.
+   Override the custom properties to match your application's theme. */
+.ds-root {
+  --ds-bg: #ffffff;
+  --ds-fg: #1f2937;
+  --ds-muted: #4b5563;
+  --ds-border: #d1d5db;
+  --ds-primary: #1d4ed8;
+  --ds-primary-fg: #ffffff;
+  --ds-danger: #b91c1c;
+  --ds-warn-bg: #fef3c7;
+  --ds-warn-fg: #78350f;
+  --ds-ok: #15803d;
+  --ds-focus: #f59e0b;
+  --ds-radius: 8px;
+  color: var(--ds-fg);
+  font: inherit;
+  line-height: 1.5;
+}
+.ds-root *, .ds-root *::before, .ds-root *::after { box-sizing: border-box; }
+.ds-root [hidden] { display: none !important; }
+.ds-app { display: grid; gap: 12px; }
+.ds-card { background: var(--ds-bg); border: 1px solid var(--ds-border); border-radius: var(--ds-radius); padding: 12px 16px; margin: 0; min-inline-size: 0; }
+.ds-card legend { font-weight: 600; padding-inline: 4px; }
+.ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ds-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.ds-field { display: flex; flex-direction: column; gap: 4px; }
+.ds-field label, .ds-custom label { font-weight: 600; font-size: .9em; display: flex; flex-direction: column; gap: 4px; }
+.ds-root select, .ds-root input[type="text"], .ds-root input[type="number"] {
+  font: inherit; color: inherit; background: #fff; border: 1px solid var(--ds-border); border-radius: 6px; padding: 6px 8px; min-block-size: 38px; inline-size: 100%;
+}
+.ds-root select:disabled, .ds-root input:disabled { background: #f3f4f6; color: var(--ds-muted); }
+.ds-hint { color: var(--ds-muted); font-size: .85em; margin: 0; }
+.ds-warn { color: var(--ds-warn-fg); background: var(--ds-warn-bg); padding: 2px 6px; border-radius: 4px; }
+.ds-live { margin: 8px 0 0; min-block-size: 1.5em; }
+.ds-actions { margin-block-start: 12px; }
+
+.ds-btn { font: inherit; border-radius: 6px; padding: 7px 14px; border: 1px solid transparent; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-block-size: 38px; }
+.ds-btn:disabled, .ds-btn[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+.ds-btn-primary { background: var(--ds-primary); color: var(--ds-primary-fg); }
+.ds-btn-secondary { background: #fff; color: var(--ds-fg); border-color: var(--ds-border); }
+.ds-btn-danger { background: #fff; color: var(--ds-danger); border-color: var(--ds-danger); }
+.ds-btn-icon { background: #fff; border-color: var(--ds-border); padding: 4px 8px; min-inline-size: 34px; min-block-size: 34px; justify-content: center; color: var(--ds-fg); }
+.ds-link { background: none; border: 0; color: var(--ds-primary); text-decoration: underline; cursor: pointer; font: inherit; padding: 0; }
+.ds-root :focus-visible { outline: 3px solid var(--ds-focus); outline-offset: 2px; }
+
+.ds-badge { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: .85em; background: #e5e7eb; }
+.ds-badge[data-state="connected"], .ds-badge[data-state="ready"] { background: #dcfce7; color: #14532d; }
+.ds-badge[data-state="not_running"], .ds-badge[data-state="offline"], .ds-badge[data-state="pairing_failed"], .ds-badge[data-state="paper_jam"], .ds-badge[data-state="none"] { background: #fee2e2; color: #7f1d1d; }
+.ds-badge[data-state="origin_blocked"], .ds-badge[data-state="incompatible"], .ds-badge[data-state="busy"], .ds-badge[data-state="cover_open"] { background: var(--ds-warn-bg); color: var(--ds-warn-fg); }
+.ds-banner { background: #ede9fe; color: #3b0764; border: 1px dashed #7c3aed; border-radius: var(--ds-radius); padding: 8px 12px; font-weight: 600; }
+
+.ds-alert { border: 1px solid var(--ds-danger); border-inline-start-width: 4px; border-radius: 6px; padding: 8px 12px; margin-block-start: 8px; background: #fef2f2; }
+.ds-alert p { margin: 0 0 6px; }
+.ds-details pre { white-space: pre-wrap; word-break: break-word; font-size: .8em; background: #f9fafb; padding: 8px; border-radius: 4px; direction: ltr; text-align: start; }
+.ds-progress { inline-size: 160px; }
+
+.ds-pages-body { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 860px) { .ds-pages-body { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } }
+.ds-empty { color: var(--ds-muted); }
+.ds-thumbs { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+.ds-thumb { border: 2px solid var(--ds-border); border-radius: 6px; padding: 6px; background: #fff; display: flex; flex-direction: column; gap: 4px; }
+.ds-thumb.ds-selected { border-color: var(--ds-primary); }
+.ds-thumb[data-status="error"] { border-color: var(--ds-danger); }
+.ds-thumb-main { border: 0; background: none; padding: 0; cursor: pointer; position: relative; display: block; inline-size: 100%; }
+.ds-thumb-img { display: flex; align-items: center; justify-content: center; block-size: 140px; overflow: hidden; background: #f3f4f6; }
+.ds-thumb-img img { max-inline-size: 100%; max-block-size: 100%; transition: transform .15s; }
+.ds-thumb-num { position: absolute; inset-block-start: 4px; inset-inline-start: 4px; background: rgba(17, 24, 39, .8); color: #fff; border-radius: 4px; padding: 0 6px; font-size: .8em; }
+.ds-thumb-tools { display: flex; flex-wrap: wrap; gap: 4px; }
+.ds-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.ds-tag { font-size: .75em; background: #e5e7eb; border-radius: 4px; padding: 0 6px; }
+.ds-tag-warn { background: var(--ds-warn-bg); color: var(--ds-warn-fg); }
+.ds-tag-error { background: #fee2e2; color: #7f1d1d; }
+.ds-spinner { inline-size: 28px; block-size: 28px; border: 3px solid #d1d5db; border-block-start-color: var(--ds-primary); border-radius: 50%; animation: ds-spin 1s linear infinite; }
+@keyframes ds-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ds-spinner { animation: none; } .ds-thumb-img img { transition: none; } }
+
+.ds-viewer-frame { overflow: auto; max-block-size: 70vh; border: 1px solid var(--ds-border); border-radius: 6px; background: #e5e7eb; padding: 8px; text-align: center; }
+.ds-viewer-img { max-inline-size: none; transform-origin: center; background: #fff; }
+.ds-viewer .ds-hint { margin-inline-start: 8px; }
+.ds-footer { text-align: end; font-size: .85em; }
+.ds-visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ds-unavailable { padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #4b5563; }

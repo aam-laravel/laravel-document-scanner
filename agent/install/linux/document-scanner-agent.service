@@ -1,0 +1,19 @@
+# systemd *user* unit (no root). Installed by install.sh into
+# ~/.config/systemd/user/. The user must be in the group that owns the scanner
+# device nodes (often "scanner" or "lp") for SANE to open USB scanners.
+[Unit]
+Description=Document Scanner Agent (local scanner bridge)
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env node %h/.local/share/document-scanner-agent/bin/scanner-agent.js run
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=false
+ProtectSystem=strict
+ReadWritePaths=%h/.local/state/document-scanner-agent /tmp
+
+[Install]
+WantedBy=default.target
