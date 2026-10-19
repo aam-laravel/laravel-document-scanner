@@ -36,18 +36,18 @@ Verified: Laravel 13.37 on PHP 8.3, and Windows 11 with a Canon MF645C (flatbed,
 
 ## 3. Install the package in a Laravel app
 
-**1) Add the repository to your app's `composer.json`:**
+Run these commands **inside your Laravel project folder** (where `composer.json` and `artisan` are).
 
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/aam-laravel/laravel-document-scanner" }
-]
+**1) Register the package repository** (the package is not on Packagist, so Composer cannot find it without this step). The `git` type with an HTTPS URL needs neither the GitHub API nor SSH keys:
+
+```bash
+composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git
 ```
 
 **2) Install, publish and migrate:**
 
 ```bash
-composer require "aam/laravel-document-scanner:^1.0"
+composer require "aam/laravel-document-scanner:~1.0"
 php artisan vendor:publish --tag=document-scanner-config
 php artisan migrate
 ```
@@ -80,6 +80,8 @@ Schedule::command('document-scanner:prune')->hourly();
 ```
 
 > PHP's `upload_max_filesize` and `post_max_size` must be at least the maximum file size (20 MB by default).
+
+> **Windows note:** use `~1.0`, not `^1.0`. In PowerShell the `^` is stripped before it reaches Composer (`composer.bat` goes through cmd), so the constraint becomes `1.0` and Composer warns it "appears too strict". Both constraints mean any 1.x release.
 
 ### Environment variables
 
@@ -232,6 +234,9 @@ Authenticated owner, CSRF, open session, non-empty file, size limit, real type s
 | "No scanner found" | Power on and connect the scanner; Windows: `Get-PnpDevice -Class Image` |
 | `HARDWARE_ERROR` with HTTP 500 | Check the scanner's display (jam or stuck job) or restart it |
 | Chrome asks for "local network" access | Allow it; it is needed to reach 127.0.0.1 |
+| Composer: `could not be found in any version` | Run inside your project folder and register the repository first (section 3, step 1) |
+| Composer: `The "1.0" constraint ... appears too strict` | PowerShell stripped the `^`; use `~1.0` |
+| Composer: `Host key verification failed` / `git@github.com` | The repository was registered as `vcs` and the GitHub API limit was hit; register it with the `git` type as in step 1 |
 
 "Copy diagnostic report" at the bottom of the UI copies a report without secrets. The `correlationId` links an error across browser, agent and server logs.
 

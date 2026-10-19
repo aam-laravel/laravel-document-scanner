@@ -2,7 +2,7 @@
 
 ## 1.0.0 — 2026-10-19
 
-الإصدار الأول، موسوم `v1.0.0` على GitHub. التثبيت: `composer require "aam/laravel-document-scanner:^1.0"`.
+الإصدار الأول، موسوم `v1.0.0` على GitHub. التثبيت: عرّف المستودع (`composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git`) ثم `composer require "aam/laravel-document-scanner:~1.0"`. استُخدم `~1.0` بدل `^1.0` لأن PowerShell على Windows يحذف الرمز `^`، والنوع `git` بدل `vcs` لتجنب حد GitHub API والنسخ عبر SSH.
 
 ### أُضيف
 - حزمة Laravel: جلسات رفع، رفع PDF مع فحص المحتوى، تخزين خاص بأسماء ULID، منع التكرار لكل جلسة، روابط تنزيل موقّعة، سياسات المالك، Gate اختياري، حدود معدل، أحداث `ScanSessionCreated`/`DocumentUploaded`/`ScanSessionCancelled`/`DocumentDeleted`، أوامر `document-scanner:check|prune|secret`، ترجمات عربية وإنجليزية، مكوّن `<x-document-scanner>` بوضعي upload وform-file.

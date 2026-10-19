@@ -36,18 +36,18 @@
 
 ## 3. تثبيت الحزمة في مشروع Laravel
 
-**1) أضف المستودع إلى `composer.json` في مشروعك:**
+نفّذ الأوامر التالية **داخل مجلد مشروع Laravel** (حيث يوجد `composer.json` و`artisan`).
 
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/aam-laravel/laravel-document-scanner" }
-]
+**1) عرّف مستودع الحزمة** (الحزمة غير منشورة على Packagist، فلا يجدها Composer دون هذه الخطوة). النوع `git` مع رابط HTTPS لا يحتاج GitHub API ولا مفاتيح SSH:
+
+```bash
+composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git
 ```
 
 **2) ثبّت وانشر وشغّل الترحيل:**
 
 ```bash
-composer require "aam/laravel-document-scanner:^1.0"
+composer require "aam/laravel-document-scanner:~1.0"
 php artisan vendor:publish --tag=document-scanner-config
 php artisan migrate
 ```
@@ -80,6 +80,8 @@ Schedule::command('document-scanner:prune')->hourly();
 ```
 
 > تأكد أن `upload_max_filesize` و`post_max_size` في PHP لا يقلان عن الحد الأقصى للملف (20 MB افتراضيًا).
+
+> **ملاحظة Windows:** استخدم `~1.0` لا `^1.0`. في PowerShell يُحذف الرمز `^` قبل وصوله إلى Composer (لأن `composer.bat` يمر عبر cmd)، فيصبح القيد `1.0` ويظهر تحذير «appears too strict». القيدان متكافئان: كلاهما يعني أي إصدار 1.x.
 
 ## 4. تثبيت الـ Agent على جهاز المستخدم
 
@@ -209,6 +211,9 @@ public function store(Request $request, PdfInspector $inspector)
 | «لم نجد ماسحًا» | شغّل الماسح ووصّله؛ Windows: `Get-PnpDevice -Class Image` |
 | `HARDWARE_ERROR` مع HTTP 500 | افحص شاشة الماسح (انحشار أو مهمة عالقة) أو أعد تشغيله |
 | Chrome يطلب إذن «الشبكة المحلية» | اسمح به، فهو مطلوب للوصول إلى 127.0.0.1 |
+| Composer: `could not be found in any version` | نفّذ الأمر داخل مجلد المشروع، وعرّف المستودع أولًا (الخطوة 1 في القسم 3) |
+| Composer: `The "1.0" constraint ... appears too strict` | PowerShell حذف `^`؛ استخدم `~1.0` |
+| Composer: `Host key verification failed` / `git@github.com` | المستودع معرّف بالنوع `vcs` وتجاوزت حد GitHub API؛ أعد تعريفه بالنوع `git` كما في الخطوة 1 |
 
 زر «نسخ تقرير التشخيص» أسفل الواجهة ينسخ تقريرًا خاليًا من الأسرار، ومعرّف `correlationId` يربط الخطأ بين المتصفح والـ Agent والخادم. القائمة الكاملة في [troubleshooting.md](troubleshooting.md).
 

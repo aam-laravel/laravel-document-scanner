@@ -1,5 +1,13 @@
 # استكشاف الأخطاء
 
+## أخطاء تثبيت الحزمة (Composer)
+
+| الرسالة | السبب والحل |
+|---|---|
+| `could not be found in any version` | نُفّذ الأمر خارج مجلد المشروع، أو لم يُعرَّف المستودع. نفّذ داخل المشروع: `composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git` |
+| `The "1.0" constraint ... appears too strict` | PowerShell حذف الرمز `^` (لأن `composer.bat` يمر عبر cmd). استخدم `~1.0`. |
+| `Failed to clone git@github.com:...` / `Host key verification failed` | المستودع معرّف بالنوع `vcs` وتجاوز Composer حد GitHub API (60 طلبًا في الساعة) فانتقل إلى SSH. أعد تعريفه بالنوع `git` مع رابط HTTPS كما أعلاه. |
+
 ## حالات الـ Agent في الواجهة
 
 | الحالة | المعنى | ما تفعله |

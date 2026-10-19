@@ -20,12 +20,11 @@
 
 ### تثبيت سريع
 
-```json
-"repositories": [{ "type": "vcs", "url": "https://github.com/aam-laravel/laravel-document-scanner" }]
-```
+داخل مجلد مشروع Laravel:
 
 ```bash
-composer require "aam/laravel-document-scanner:^1.0"
+composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git
+composer require "aam/laravel-document-scanner:~1.0"
 php artisan migrate
 php artisan document-scanner:secret   # ضع الناتج في DOCUMENT_SCANNER_AGENT_SECRET
 php artisan document-scanner:check
@@ -66,12 +65,11 @@ A Laravel package for scanning documents from physical scanners through a local 
 
 ### Quick start
 
-```json
-"repositories": [{ "type": "vcs", "url": "https://github.com/aam-laravel/laravel-document-scanner" }]
-```
+Inside your Laravel project folder:
 
 ```bash
-composer require "aam/laravel-document-scanner:^1.0"
+composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git
+composer require "aam/laravel-document-scanner:~1.0"
 php artisan migrate
 php artisan document-scanner:secret   # put the output in DOCUMENT_SCANNER_AGENT_SECRET
 php artisan document-scanner:check

@@ -2,28 +2,32 @@
 
 ## 1. حزمة Laravel
 
-### من GitHub أو مسار محلي
+نفّذ الأوامر **داخل مجلد مشروع Laravel**. الحزمة غير منشورة على Packagist، لذا عرّف مستودعها أولًا.
 
-```json
-// composer.json في تطبيقك
-"repositories": [
-    { "type": "path", "url": "../laravel-document-scanner", "options": { "symlink": true } }
-]
-```
-
-أو من GitHub:
-
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/aam-laravel/laravel-document-scanner" }
-]
-```
-
-ثم:
+### من GitHub (الطريقة المعتادة)
 
 ```bash
-composer require "aam/laravel-document-scanner:^1.0"
-# مع مستودع path (نسخة محلية للتطوير) استخدم بدلًا منه: "aam/laravel-document-scanner:@dev"
+composer config repositories.document-scanner git https://github.com/aam-laravel/laravel-document-scanner.git
+composer require "aam/laravel-document-scanner:~1.0"
+```
+
+الأمر الأول يضيف إلى `composer.json`:
+
+```json
+"repositories": {
+    "document-scanner": { "type": "git", "url": "https://github.com/aam-laravel/laravel-document-scanner.git" }
+}
+```
+
+> لماذا `git` لا `vcs`؟ مع `vcs` يقرأ Composer الحزمة عبر GitHub API المحدود بـ 60 طلبًا في الساعة دون تسجيل دخول، وعند تجاوز الحد يحاول النسخ عبر SSH (`git@github.com`) فيفشل عند من لا يملك مفتاح SSH. النوع `git` مع رابط HTTPS ينسخ المستودع العام مباشرة دون API ودون مفاتيح.
+
+> استخدم `~1.0` لا `^1.0` على Windows: في PowerShell يُحذف الرمز `^` قبل وصوله إلى Composer (لأن `composer.bat` يمر عبر cmd). القيدان متكافئان (أي إصدار 1.x).
+
+### من نسخة محلية (للتطوير على الحزمة نفسها)
+
+```bash
+composer config repositories.document-scanner '{"type": "path", "url": "../laravel-document-scanner", "options": {"symlink": true}}'
+composer require "aam/laravel-document-scanner:@dev"
 ```
 
 يُسجَّل `DocumentScannerServiceProvider` والواجهة `DocumentScanner` تلقائيًا (Package Discovery). إن عطّلت الاكتشاف، أضف المزوّد يدويًا إلى `bootstrap/providers.php`:
