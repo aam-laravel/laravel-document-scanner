@@ -25,7 +25,7 @@
 ```
 
 ```bash
-composer require "aam/laravel-document-scanner:dev-main"
+composer require "aam/laravel-document-scanner:^1.0"
 php artisan migrate
 php artisan document-scanner:secret   # ضع الناتج في DOCUMENT_SCANNER_AGENT_SECRET
 php artisan document-scanner:check
@@ -71,7 +71,7 @@ A Laravel package for scanning documents from physical scanners through a local 
 ```
 
 ```bash
-composer require "aam/laravel-document-scanner:dev-main"
+composer require "aam/laravel-document-scanner:^1.0"
 php artisan migrate
 php artisan document-scanner:secret   # put the output in DOCUMENT_SCANNER_AGENT_SECRET
 php artisan document-scanner:check

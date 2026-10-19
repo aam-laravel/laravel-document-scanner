@@ -47,7 +47,7 @@ Verified: Laravel 13.37 on PHP 8.3, and Windows 11 with a Canon MF645C (flatbed,
 **2) Install, publish and migrate:**
 
 ```bash
-composer require "aam/laravel-document-scanner:dev-main"
+composer require "aam/laravel-document-scanner:^1.0"
 php artisan vendor:publish --tag=document-scanner-config
 php artisan migrate
 ```

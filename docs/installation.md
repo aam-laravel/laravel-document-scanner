@@ -22,7 +22,8 @@
 ثم:
 
 ```bash
-composer require "aam/laravel-document-scanner:dev-main"   # أو رقم إصدار بعد وسم المستودع (git tag v1.0.0)
+composer require "aam/laravel-document-scanner:^1.0"
+# مع مستودع path (نسخة محلية للتطوير) استخدم بدلًا منه: "aam/laravel-document-scanner:@dev"
 ```
 
 يُسجَّل `DocumentScannerServiceProvider` والواجهة `DocumentScanner` تلقائيًا (Package Discovery). إن عطّلت الاكتشاف، أضف المزوّد يدويًا إلى `bootstrap/providers.php`:

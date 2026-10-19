@@ -47,7 +47,7 @@
 **2) ثبّت وانشر وشغّل الترحيل:**
 
 ```bash
-composer require "aam/laravel-document-scanner:dev-main"
+composer require "aam/laravel-document-scanner:^1.0"
 php artisan vendor:publish --tag=document-scanner-config
 php artisan migrate
 ```
